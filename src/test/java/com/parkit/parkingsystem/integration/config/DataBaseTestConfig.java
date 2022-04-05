@@ -1,8 +1,10 @@
 package com.parkit.parkingsystem.integration.config;
 
+
 import com.parkit.parkingsystem.config.DataBaseConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 
 import java.sql.*;
 
@@ -24,6 +26,7 @@ public class DataBaseTestConfig extends DataBaseConfig {
                 logger.info("Closing DB connection");
             } catch (SQLException e) {
                 logger.error("Error while closing connection",e);
+
             }
         }
     }
