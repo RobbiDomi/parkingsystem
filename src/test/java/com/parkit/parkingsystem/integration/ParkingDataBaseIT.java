@@ -12,17 +12,13 @@ import com.parkit.parkingsystem.model.Ticket;
 import com.parkit.parkingsystem.service.FareCalculatorService;
 import com.parkit.parkingsystem.service.ParkingService;
 import com.parkit.parkingsystem.util.InputReaderUtil;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.sql.Time;
 import java.time.Duration;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -67,7 +63,7 @@ public class ParkingDataBaseIT {
         Ticket tktDB = ticketDAO.getTicket("ABCDEF");
         assertEquals("ABCDEF", tktDB.getVehicleRegNumber());
         assertFalse(tktDB.getParkingSpot().isAvailable());
-        // Assertions.assertThat()
+        //Assertions.assertThat()
     }
 
     @Test
@@ -75,7 +71,6 @@ public class ParkingDataBaseIT {
         testParkingACar();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingService.processExitingVehicle();
-
         //DONE : check that the fare generated and out time are populated correctly in the database
         Ticket tktGen = ticketDAO.getTicket("ABCDEF");
         boolean tktFar = (tktGen.getPrice()>=0);
